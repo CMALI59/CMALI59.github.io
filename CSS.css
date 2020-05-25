@@ -1,14 +1,2 @@
 
- 
-h2 {
-   text-shadow: 0 1px 0 orange, 0 -1px 0 orange, 1px 0 0 orange, -1px 0 0 orange;
-   color: white;
-}
-h3 {
-   -webkit-text-stroke: 3px black;
-   color: white;
-}
-p {
-  background-color: green;
-}
 h3{color: red:}
