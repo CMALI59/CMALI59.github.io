@@ -18,12 +18,40 @@
 body {background-color: green;}
 h2   {color: blue;}
 p    {color: orange;}
- <link rel="stylesheet" type="text/css" href="CSS.css">
- li {
-  display: inline;
+ li {display: inline;}
 
-  span {
-  display: block;
+  span {display: block;}
+  h7.hidden {
+  display: none;
+}
+  span.b {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  border: 1px solid blue;    
+  background-color: yellow; 
+}
+  div.relative {
+  position: relative;
+  left: 30px;
+  border: 3px solid #73AD21;
+}
+  div.absolute {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 200px;
+  height: 100px;
+  border: 3px solid #73AD21;
+}
+  div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  background-color: #cae8ca;
+  border: 2px solid #4CAF50;
 }
 </style>
 </head>
@@ -46,8 +74,9 @@ p    {color: orange;}
  <h6> Chicago is known for </h6>
   <p id="Food">great food</p>
   <p id="Entertainment">entertainment</p>
-    <p id="Buildings">Tall buildings</p>
+    <p id="Buildings">Tall buildings</p> 
 </div>
+  <div class="sticky">Come Visit Chicago!</div>
 <h1 style="color:crimson;">The city of Chicago</h1> 
 <img src="https://s3-prod.chicagobusiness.com/s3fs-public/editorial-chicago-WEB_i.jpg" alt="Chicago" width="500" height="333">
 <p style="color:red;">Chicago is know as the windy city along with other nicknames</p>
@@ -70,6 +99,18 @@ p    {color: orange;}
 </ul>
 
  <span>The taste of chicago is home</span> <span>to some of the most delicious foods the city has to offer</span>
+  
+  <h2>display: inline-block</h2>
+<div>the longest street in chicago is  <span class="b">Western Ave</span> <span class="b">McDermott Street</span>is the shortest street in chicago. </div>
+  
+  <div class="relative">
+This sentence I love chicago has position: relative;
+    <div class="absolute">This div element has position: absolute;</div>
+</div>
+  
+  
+  
+
 
 <h2>Internet Fact</h2>
 <p>Wireless Internet signals generally emit from your router in a doughnut shape. Tasty.</p>
@@ -83,9 +124,9 @@ p    {color: orange;}
 <h4>HTML fact</h5>
 <p>HTML is a tag based language</p>
     <a href="https://www.yourdictionary.com/tag-based-language">https://www.yourdictionary.com/tag-based-language</a> *
-    
+   
+  
+<h7 class="hidden">This is a hidden heading</h7>
+<p>Notice that the h7 element with display: none; does not take up any space.</p>
     </body>
 </html>
-
-
-
