@@ -1,10 +1,6 @@
 
 <html>
 <head>
-  <style>
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="golfCSS.css">
-  </style>
   </head>
 <body>
 <h1>Golf Scorecard</h1>
@@ -152,6 +148,10 @@
 </table>
   
   <script>
+      <style>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="golfCSS.css">
+  </style>
     var elem
   = document.getElementById("1");
 // display the number of children (all td elements)
@@ -371,6 +371,33 @@ function clear (elem) {
  elem.children[3].innerHTML = "-";
   elem.children[2].innerHTML = "-";
   }
+    function TotalScore () {
+elems = document.getElementsByTagName("tr");
+scoreTotal = 0; overTotal = 0;
+
+for(var i = 1; i<19; i++)
+  {
+   
+    if(junk[i].children[2].innerHTML == "-")
+      {
+        scoreTotal += 0;
+      }
+    else
+      {
+        scoreTotal += parseInt(junk[i].children[2].innerHTML);
+      }
+    if(junk[i].children[3].innerHTML == "-")
+      {
+        overTotal += 0;
+      }
+    else
+      {
+        overTotal += parseInt(junk[i].children[3].innerHTML);
+      }
+  elems[19].children[2].innerHTML = scoreTotal;
+  elems[19].children[3].innerHTML = overTotal;
+}
+}
     </script>
   </body>
   </html>
