@@ -367,6 +367,28 @@ function subtract1 (elem) {
     
   }
 }
+    function totals() {
+	var elem19 = document.getElementById("19");
+	var totalScore = 0;
+	var totalOver = 0;
+	var elemNum = [elem1, elem2, elem3, elem4, elem5, elem6, elem7, elem8, elem9, elem10, elem11, elem12, elem13, elem14, elem15, 
+					elem16, elem17, elem18];
+	var i;
+	for (i of elemNum) {
+		if(i.children[2].innerHTML == "-") 
+		else {
+			let tempScore = i.children[2].innerHTML;
+			tempScore = Number.parseInt(tempScore);
+			totalScore = totalScore + tempScore;
+			let tempOver = i.children[3].innerHTML;
+			tempOver = Number.parseInt(tempOver);
+			totalOver = totalOver + tempOver;
+		}
+	}
+	elem19.children[2].innerHTML = totalScore;
+	elem19.children[3].innerHTML = totalOver;
+}
+}
 function clear (elem) {
  elem.children[3].innerHTML = "-";
   elem.children[2].innerHTML = "-";
