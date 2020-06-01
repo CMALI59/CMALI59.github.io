@@ -1,6 +1,6 @@
 html,
-h3 {color: red;}
-h4 {
+h5 {color: red;}
+h6 {
    text-shadow: 0 1px 0 pink;
    color: #292929;
 }
