@@ -385,15 +385,15 @@ for(var i = 1; i<19; i++)
       }
     else
       {
-        scoreTotal += parseInt(junk[i].children[2].innerHTML);
+        scoreTotal += parseInt(elms[i].children[2].innerHTML);
       }
-    if(junk[i].children[3].innerHTML == "-")
+    if(elms[i].children[3].innerHTML == "-")
       {
         overTotal += 0;
       }
     else
       {
-        overTotal += parseInt(junk[i].children[3].innerHTML);
+        overTotal += parseInt(elms[i].children[3].innerHTML);
       }
   elems[19].children[2].innerHTML = scoreTotal;
   elems[19].children[3].innerHTML = overTotal;
