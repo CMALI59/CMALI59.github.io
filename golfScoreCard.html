@@ -371,35 +371,6 @@ function clear (elem) {
  elem.children[3].innerHTML = "-";
   elem.children[2].innerHTML = "-";
   }
-    function totals() {
-	var elem19 = document.getElementById("19");
-	var totalHoles = 0;
-	var totalPar = 0;
-	var totalScore = 0;
-	var totalOver = 0;
-	var elemNum = [elem1, elem2, elem3, elem4, elem5, elem6, elem7, elem8, elem9, elem10, elem11, elem12, elem13, elem14, elem15, 
-					elem16, elem17, elem18];
-	var i;
-	for (i of elemNum) {
-		if(i.children[2].innerHTML == "-") totalHoles = totalHoles;
-		else {
-			totalHoles = totalHoles + 1;
-			let tempPar = i.children[1].innerHTML;
-			tempPar = Number.parseInt(tempPar);
-			totalPar = totalPar + tempPar;
-			let tempScore = i.children[2].innerHTML;
-			tempScore = Number.parseInt(tempScore);
-			totalScore = totalScore + tempScore;
-			let tempOver = i.children[3].innerHTML;
-			tempOver = Number.parseInt(tempOver);
-			totalOver = totalOver + tempOver;
-		}
-	}
-	elem19.children[0].innerHTML = totalHoles;
-	elem19.children[1].innerHTML = totalPar;
-	elem19.children[2].innerHTML = totalScore;
-	elem19.children[3].innerHTML = totalOver;
-}
     </script>
   </body>
   </html>
