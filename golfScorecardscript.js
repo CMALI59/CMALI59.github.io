@@ -1,4 +1,4 @@
- <script>
+
     var elem
   = document.getElementById("1");
 // display the number of children (all td elements)
