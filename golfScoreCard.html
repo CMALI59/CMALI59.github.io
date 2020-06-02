@@ -372,13 +372,14 @@ function clear (elem) {
   elem.children[2].innerHTML = "-";
   }
     function TotalScore () {
-elems = document.getElementsByTagName("tr");
+var elems 
+= document.getElementsByTagName("tr");
 scoreTotal = 0; overTotal = 0;
 
 for(var i = 1; i<19; i++)
   {
    
-    if(junk[i].children[2].innerHTML == "-")
+    if(elems[i].children[2].innerHTML == "-")
       {
         scoreTotal += 0;
       }
