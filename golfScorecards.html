@@ -4,10 +4,15 @@
   <link rel="stylesheet" type="text/css" href="golfCSS.css">
   <style>
     body {background-color: orange;}
+    h2{color: blue;}
+    h3{color: grey:}
   </style>
   </head>
 <body>
 <h1>Golf Scorecard</h1>
+  <h2><button onclick='addCard();'>New Scorecard</button></h2>
+  <h3><button onclick='saveCard();'>Save Scorecard</button></h3>
+
 <table class="table table-striped">
   <tr id="0">
     <th>Hole</th>
@@ -25,7 +30,7 @@
   </tr>
   <tr id="2">
     <td>2</td>
-    <td>4</td>
+    <td>5</td>
     <td>-</td>
     <td>-</td>
     <td><button class="btn btn-success">+</button> <button class="btn btn-danger">-</button> <button class= style="color:clear;""btn btn-clear">C</button</td></td>
@@ -39,7 +44,7 @@
   </tr>
   <tr id="4">
     <td>4</td>
-    <td>4</td>
+    <td>3</td>
     <td>-</td>
     <td>-</td>
     <td><button class="btn btn-success">+</button> <button class="btn btn-danger">-</button> <button class= style="color:clear;""btn btn-clear">C</button</td></td>
@@ -53,7 +58,7 @@
   </tr>
   <tr id="6">
     <td>6</td>
-    <td>4</td>
+    <td>5</td>
     <td>-</td>
     <td>-</td>
     <td><button class="btn btn-success">+</button> <button class="btn btn-danger">-</button> <button class= style="color:clear;""btn btn-clear">C</button</td></td>
@@ -67,7 +72,7 @@
   </tr>
   <tr id="8">
     <td>8</td>
-    <td>4</td>
+    <td>3</td>
     <td>-</td>
     <td>-</td>
     <td><button class="btn btn-success">+</button> <button class="btn btn-danger">-</button> <button class= style="color:clear;""btn btn-clear">C</button</td></td>
@@ -88,7 +93,7 @@
   </tr>
   <tr id="11">
     <td>11</td>
-    <td>4</td>
+    <td>5</td>
     <td>-</td>
     <td>-</td>
     <td><button class="btn btn-success">+</button> <button class="btn btn-danger">-</button> <button class= style="color:clear;""btn btn-clear">C</button</td></td>
@@ -102,7 +107,7 @@
   </tr>
   <tr id="13">
     <td>13</td>
-    <td>4</td>
+    <td>3</td>
     <td>-</td>
     <td>-</td>
     <td><button class="btn btn-success">+</button> <button class="btn btn-danger">-</button> <button class= style="color:clear;""btn btn-clear">C</button</td></td>
@@ -116,14 +121,14 @@
   </tr>
   <tr id="15">
     <td>15</td>
-    <td>4</td>
+    <td>5</td>
     <td>-</td>
     <td>-</td>
     <td><button class="btn btn-success">+</button> <button class="btn btn-danger">-</button> <button class= style="color:clear;""btn btn-clear">C</button</td></td>
   </tr>
   <tr id="16">
     <td>16</td>
-    <td>4</td>
+    <td>3</td>
     <td>-</td>
     <td>-</td>
     <td><button class="btn btn-success">+</button> <button class="btn btn-danger">-</button> <button class= style="color:clear;""btn btn-clear">C</button</td></td>
@@ -370,6 +375,65 @@ function clear (elem) {
  elem.children[3].innerHTML = "-";
   elem.children[2].innerHTML = "-";
   }
+ function addCard() {
+		saveCard;
+		pars = getPars();
+}
+  function getPars() {
+	if (localStorage.getItem("pars")) {
+	var holePars = localStorage.getItem("pars");
+	var elemNum = [elem1, elem2, elem3, elem4, elem5, elem6, elem7, elem8, elem9, elem10, elem11, elem12, elem13, elem14, elem15, 
+					elem16, elem17, elem18];
+	var i;
+	var increment = 0;
+	for (i of elemNum){
+		i.children[1].innerHTML = holePars[increment];
+		increment += 1;
+		}
+	}
+	else {
+	var holePars = [4,5,4,3,4,5,4,3,4, 4,5,4,3,4,5,3,4,4];
+	var elemNum = [elem1, elem2, elem3, elem4, elem5, elem6, elem7, elem8, elem9, elem10, elem11, elem12, elem13, elem14, elem15, 
+					elem16, elem17, elem18];
+	var i;
+	var increment = 0;
+	for (i of elemNum){
+		i.children[1].innerHTML = holePars[increment];
+		increment += 1;
+		}
+	}
+	return holePars;
+}
+function saveCard() {
+	var holes = new Array();
+	var elemNum = [elem1, elem2, elem3, elem4, elem5, elem6, elem7, elem8, elem9, elem10, elem11, elem12, elem13, elem14, elem15, 
+					elem16, elem17, elem18];
+	var currentDate = new Date();
+	holes.push(currentDate);
+	var increment = 0;
+	var j;
+	for (j of elemNum) {
+		var currentHole = new Array();
+		currentHole.push(j.children[0].innerHTML);
+		currentHole.push(j.children[1].innerHTML);
+		currentHole.push(j.children[2].innerHTML);
+		currentHole.push(j.children[3].innerHTML);
+		currentHole.push(j.children[4].innerHTML);
+		currentHole.push(j.children[5].innerHTML);
+		holes.push(currentHole);
+		increment += 1;
+}
+		historyCards.push(holes);
+		var str = JSON.stringify(historyCards);
+		localStorage.setItem("rounds", str);
+		savePars;
+}
+  function savePars() {
+	var str = JSON.stringify(pars);
+	localStorage.setItem("pars", str);
+}
+var Pars = getPars();
+
     </script>
   </body>
   </html>
