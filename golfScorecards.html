@@ -375,9 +375,30 @@ function clear (elem) {
  elem.children[3].innerHTML = "-";
   elem.children[2].innerHTML = "-";
   }
+	   
+function loadCards() {
+	var round = new Array();
+	if (localStorage.getItem("rounds")) {
+		round = JSON.parse(localStorage.getItem("rounds"));
+	
+	}
+	return round;
+}
  function addCard() {
 		saveCard;
+	 	resetRounds
 		pars = getPars();
+}
+	   
+function resetRounds() {
+	var elemNum = [elem1, elem2, elem3, elem4, elem5, elem6, elem7, elem8, elem9, elem10, elem11, elem12, elem13, elem14, elem15, 
+					elem16, elem17, elem18];
+	var h;				
+	for (h of elemNum){
+		h.children[2].innerHTML = "-";
+		h.children[3].innerHTML = "-";
+		h.children[4].innerHTML = "0";
+	}
 }
   function getPars() {
 	if (localStorage.getItem("pars")) {
@@ -432,7 +453,8 @@ function saveCard() {
 	var str = JSON.stringify(pars);
 	localStorage.setItem("pars", str);
 }
-var Pars = getPars();
+	   var Pars = getPars();
+	   var historyCards = loadCards();
 
     </script>
   </body>
