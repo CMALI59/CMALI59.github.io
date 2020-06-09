@@ -378,8 +378,8 @@ function clear (elem) {
 	   
 }
   function getPars() {
-	if (localStorage.getItem("pars")) {
-	var holePars = localStorage.getItem("pars");
+	if (localStorage.getItem("Pars")) {
+	var holePars = localStorage.getItem("Pars");
 	var elemNum = [elem1, elem2, elem3, elem4, elem5, elem6, elem7, elem8, elem9, elem10, elem11, elem12, elem13, elem14, elem15, elem16, elem17, elem18];
 	var i;
 	var increment = 0;
@@ -401,8 +401,8 @@ function clear (elem) {
 	return holePars;
 }
   function savePars() {
-	var str = JSON.stringify(pars);
-	localStorage.setItem("pars", str);
+	var str = JSON.stringify(Pars);
+	localStorage.setItem("Pars", str);
 }
 	   var Pars = getPars();
 
