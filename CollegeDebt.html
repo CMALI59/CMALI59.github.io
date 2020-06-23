@@ -1,8 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="en">
 
-	<head>
+<html>
+
+<style>
+body {
+  background-color: linen;
+}
+<div class="header">
+  <h1>Welcome !</h1>
+</div>
+</style>
+<ul>
+   <li>
+      <a href= "http://csis.svsu.edu/~aataylo3/">CIS Server</a> *
+   </li>
+   <li>
+      <a href= "https://arieltaylor21.github.io/">Git Hub</a> *
+   </li>
+   <li>
+      <a href= "http://webp.svsu.edu/~aataylo3/">V Drive</a> *
+   </li>
+</ul>
+        <a href="index.html"> Homepage</a><br />
+        <a href="assignment01.html">Assignment 01</a><br />
+        <a href="assignment02.html">Assignment 02</a><br />
+        <a href="assignment03.html">Assignment 03</a><br />
+        <a href="assignment04.html">Assignment 04</a><br />
+        <a href="assignment05.html">Assignment 05</a><br />
+        <a href="assignment06.html">Assignment 06</a><br />
+        <a href="assignment07.html">Assignment 07</a><br />
+</style>
+  	<head>
 
 		<title>College Debt Estimator</title>
 
@@ -17,10 +47,10 @@
 
 	</head>
 
-	<body onload="loadDoc();">
+	<body onload="">
 
 		<div class="container">
-
+      <div ng-app="myApp" ng-controller="myCtrl"> <!-- Adding angular and my controller-->
 			<form>
 
 				<h1>College Debt Estimator</h1>
@@ -75,8 +105,10 @@
 									<td><span id="loan_int_accrued">$7,219.62</span></td>
 								</tr>
 							</table>
+              <button type="button" class="btn btn-success" onclick=" verifyYEAR(); ">Continue with Entered Year</button>  <button type="button" class="btn btn-warning" onclick=" verifyAMOUNT(); ">Continue with Entered Amount</button> <button type="button" class="btn btn-danger" onclick=" verifyINTEREST(); ">Continue with Interest Rate</button> <!-- Adding button which users can click to validate their input-->
 							<br />
-							<button type="button" class="btn btn-primary" onclick="processForm();">Re-calculate</button> 
+              <p id = "msg"></p> 
+							<button type="button" class="btn btn-primary" ng-click= "populate();">Re-calculate</button> <!-- make sure the button to calculate results has the angular directive -->
 						</div>
 					</div>
 
@@ -92,12 +124,11 @@
 									<th>Int Amt</th>
 									<th>YE Bal</th>
 								</tr>
-								<tr>
-									<td><span id="pmt_year01">2025</span></td>
-									<td><span id="pmt_amt01">$6,500.00</span></td>
-									<td><span id="pmt_int01">$2,297.60</span></td>
-									<td><span id="pmt_bal01">$53,017.22</span></td>
-								</tr>
+								<tr ng-repeat="x in payments"> <!-- Data binding, binds AngularJS expressions with AngularJS data. i.e. year payment, amount and balance-->
+										<td>{{ x.year }}</td>
+										<td>{{ x.payment }}</td>
+										<td>{{ x.amt }}</td>
+										<td>{{ x.bal }}</td>
 								
 							</table>
 						</div>
@@ -114,10 +145,11 @@
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
-		
-<script>
-      // --- global variables ---
+      <!--- Adding angualr,  AngularJS is distributed as a JavaScript file, and can be added to a web page with a script tag -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script> 
 
+	<script>   
+	// --- global variables ---
 var loans = [
   { loan_year: 2020, loan_amount: 10000.00, loan_int_rate: 0.0453 },
   { loan_year: 2021, loan_amount: 10000.00, loan_int_rate: 0.0453 },
@@ -125,6 +157,10 @@ var loans = [
   { loan_year: 2023, loan_amount: 10000.00, loan_int_rate: 0.0453 },
   { loan_year: 2024, loan_amount: 10000.00, loan_int_rate: 0.0453 }
 ]; 
+//Storeloans array data using localStorage.
+//localStorage["loans"] = JSON.stringify(datas);
+// Retrieve
+//var stored_loans = JSON.parse(localStorage["loans"]);
 
 // --- function: loadDoc() ---
 
@@ -133,13 +169,19 @@ function verifyYEAR(){ //create a function to verify the input of year
   var regex = /^\d{4}$/; // year enetered has to be 4 digits 
   var id = document.getElementById("loan_year01").value; //verifies year from the first user input of the year
   if(regex.test(id))document.getElementById("msg").innerHTML = ""; //Checks with if statement if entered input is a number and has 4.
-  else document.getElementById("msg").innerHTML = "Enter a valid 4 digit year";// if not print message asking user to reenter a valid year
+  else document.getElementById("msg").innerHTML = "Enter a valid 4 digit year, then click again";// if not print message asking user to reenter a valid year
 }
 function verifyAMOUNT(){ //create a function to verify the input of amount
   var regex = /^([1-9][0-9]*)|([0]+)$/; // amount enetered cant start wit 0 & has to be a number 
   var id = document.getElementById("loan_amt01").value; //verifies amount from the first user input is an actual number
   if(regex.test(id))document.getElementById("msg").innerHTML = ""; //Checks with if statement if entered input is valid.
-  else document.getElementById("msg").innerHTML = "Enter a valid loan anount";// if not print message asking user to reenter a valid amount
+  else document.getElementById("msg").innerHTML = "Enter a valid loan anount,then click again";// if not print message asking user to reenter a valid amount
+}
+function verifyINTEREST(){ //create a function to verify the input of interest rate
+  var regex = /^\d{1,2}(\.\d{1,4})?$/; // interest enetered can have two numbers before the decimal and up to 4 numbers after the decimal
+  var id = document.getElementById("loan_int01").value; //verifies interest rate from the first user input is a valid number
+  if(regex.test(id))document.getElementById("msg").innerHTML = ""; //Checks with if statement if entered input is valid.
+  else document.getElementById("msg").innerHTML = "Enter a valid interest rate(be sure to put a number befor the decimal), then click again";// if not print message asking user to reenter a valid interest rate
 }
 
 //function loadDoc() {
@@ -202,8 +244,47 @@ function updateLoansArray() {
     loans[i].loan_year = loans[0].loan_year + i;
     $("#loan_year0"+ (i+1) ).val(loans[i].loan_year);
   }
+  let toMoney = (value) => { //return dollar amount of calculations
+  return `\$${toComma(value.toFixed(2))}`;
 }
-      
+  //Storeloans array data using localStorage.
+localStorage["loans"] = JSON.stringify(datas);
+// Retrieve
+var stored_loans = JSON.parse(localStorage["loans"]);
+
+  
+}// --- ANGULAR ---
+
+var app = angular.module('myApp', []); //A module is created by using the AngularJS function angular.module. The "myApp" parameter refers to an HTML element in which the application will run.
+app.controller('myCtrl', function($scope) {//scope is the binding part between the HTML (view) and the JavaScript (controller). 
+  $scope.payments =[]; //you pass the $scope object as an argument:
+  $scope.populate = function () { // calls populate function
+   
+    let total = loanWithInterest; // calculate total
+    let iRate = loans[0].loan_int_rate; // calculate interest rate from loan
+    let r = iRate / 12; // rate of interest per year
+    let n = 11; // numper of times per period
+    //loan payment formula from
+    //https://www.thebalance.com/loan-payment-calculations-315564
+    let pay = 12 * (total / ((((1+r)**(n*12))-1)/(r *(1+r)**(n*12)))); // formula to get interest 
+    for (let i = 0; i < 10; i++) { // for loop too keep track of calculations as increases
+      total -= pay //6500
+      let int = total * (iRate); 
+      $scope.payments[i]={
+        "year":loans[4].loan_year + i + 1,
+        "payment": toMoney(pay), //toMoney(6500),
+        "amt": toMoney(int),
+        "bal": toMoney(total += int)
+      }
+    }
+    $scope.payments[10] = {
+      "year": loans[4].loan_year + 11,
+      "payment": toMoney(total),
+      "amt": toMoney(0),
+      "bal":toMoney(0)
+    }
+  }
+});
     </script>
     
 	</body>
