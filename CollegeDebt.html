@@ -149,8 +149,9 @@ function verifyAMOUNT(){ //create a function to verify the input of amount
   var regex = /^([1-9][0-9]*)|([0]+)$/; // amount enetered cant start wit 0 & has to be a number 
   var id = document.getElementById("loan_amt01").value; //verifies amount from the first user input is an actual number
   if(regex.test(id))document.getElementById("msg").innerHTML = ""; //Checks with if statement if entered input is valid.
-  else document.getElementById("msg").innerHTML = "Enter a valid loan anount,then click again";// if not print message asking user to reenter a valid amount
-}
+  else 
+	  alert("Entry must be year like 1984 or 2050 for example"); // alert why the number is rejected
+	}
 function verifyINTEREST(){ //create a function to verify the input of interest rate
   var regex = /^\d{1,2}(\.\d{1,4})?$/; // interest enetered can have two numbers before the decimal and up to 4 numbers after the decimal
   var id = document.getElementById("loan_int01").value; //verifies interest rate from the first user input is a valid number
