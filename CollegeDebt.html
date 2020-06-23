@@ -226,36 +226,36 @@ var stored_loans = JSON.parse(localStorage["loans"]);
   
 }// --- ANGULAR ---
 
-var app = angular.module('myApp', []); //A module is created by using the AngularJS function angular.module. The "myApp" parameter refers to an HTML element in which the application will run.
-app.controller('myCtrl', function($scope) {//scope is the binding part between the HTML (view) and the JavaScript (controller). 
-  $scope.payments =[]; //you pass the $scope object as an argument:
-  $scope.populate = function () { // calls populate function
-   
-    let total = loanWithInterest; // calculate total
-    let iRate = loans[0].loan_int_rate; // calculate interest rate from loan
-    let r = iRate / 12; // rate of interest per year
-    let n = 11; // numper of times per period
-    //loan payment formula from
-    //https://www.thebalance.com/loan-payment-calculations-315564
-    let pay = 12 * (total / ((((1+r)**(n*12))-1)/(r *(1+r)**(n*12)))); // formula to get interest 
-    for (let i = 0; i < 10; i++) { // for loop too keep track of calculations as increases
-      total -= pay //6500
-      let int = total * (iRate); 
-      $scope.payments[i]={
-        "year":loans[4].loan_year + i + 1,
-        "payment": toMoney(pay), //toMoney(6500),
-        "amt": toMoney(int),
-        "bal": toMoney(total += int)
-      }
-    }
-    $scope.payments[10] = {
-      "year": loans[4].loan_year + 11,
-      "payment": toMoney(total),
-      "amt": toMoney(0),
-      "bal":toMoney(0)
-    }
-  }
-});
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+  $scope.payments =[];
+	$scope.populate = function (){
+	  let totalLoan = loanWithInterest;
+	  let interestRate = loans[0].loan_int_rate;
+	  let r = interestRate/12;
+	  let n = 10;
+		//loan payment formula
+		//https://www.thebalance.com/loan-payment-calculations-315564
+	  let pay = 12 * (totalLoan / ((((1+r)**(n*12))-1)/(r *(1+r)**(n*12))));
+		for (let i=0; i<9; i++){
+			totalLoan -= pay
+			let interest = totalLoan * interestRate;
+			$scope.payments[i]={
+			"year":loans[4].loan_year + i + 1,
+			"paymentAmount": pay,
+			"interestAmount": interest,
+			"yearEndBalance": totalLoan += interest
+			}
+		}
+		$scope.payments[9] ={
+		  "year":loans[4].loan_year + 10,
+		  "paymentAmount": totalLoan,
+		  "interestAmount": 0,
+		  "yearEndBalance":0,
+		  "style":"background-color: yellow"
+		  }
+	}
+})
     </script>
     
 	</body>
