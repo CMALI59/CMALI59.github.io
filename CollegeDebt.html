@@ -98,7 +98,7 @@
 									<th>Int Amt</th>
 									<th>YE Bal</th>
 								</tr>
-								<tr ng-repeat="x in payments"> <!-- Data binding, binds AngularJS expressions with AngularJS data. i.e. year payment, amount and balance-->
+								<tr ng-repeat="x in payments">
 										<td>{{ x.year }}</td>
 										<td>{{ x.payment }}</td>
 										<td>{{ x.amt }}</td>
@@ -140,9 +140,9 @@ var loans = [
 
 //regular expressions to validate input fields
 function verifyYEAR(){ //create a function to verify the input of year
-  var regex = /^\d{4}$/; // year enetered has to be 4 digits 
-  var id = document.getElementById("loan_year01").value; //verifies year from the first user input of the year
-  if(regex.test(id))document.getElementById("msg").innerHTML = ""; //Checks with if statement if entered input is a number and has 4.
+  var regex = /^\d{4}$/; // year must be 4 digits 
+  var id = document.getElementById("loan_year01").value; //verifies year from the first year of input
+  if(regex.test(id))document.getElementById("msg").innerHTML = ""; //Checks if entered input is a number and has 4.
   else
 	  alert("Year must be four digits even if it starts with zero and ends with one"); // alert why the year is rejected
 	}
@@ -151,7 +151,7 @@ function verifyAMOUNT(){ //create a function to verify the input of amount
   var id = document.getElementById("loan_amt01").value; //verifies amount from the first user input is an actual number
   if(regex.test(id))document.getElementById("msg").innerHTML = ""; //Checks with if statement if entered input is valid.
   else 
-	  alert("Loan amount cannot start with zero"); // alert why the number is rejected
+	  alert("Loan amount cannot start with zero"); // alert why the loan amount is rejected
 	}
 function verifyINTEREST(){ //create a function to verify the input of interest rate
   var regex = /^\d{1,2}(\.\d{1,4})?$/; // interest enetered can have two numbers before the decimal and up to 4 numbers after the decimal
@@ -205,9 +205,6 @@ $(document).ready(function(){
   $("#loan_year01").blur( function() {
     updateLoansArray();
   });
-  
-//} // end: function loadDoc()
-  //jQuery to close
 });
 
 
@@ -230,7 +227,8 @@ localStorage["loans"] = JSON.stringify(datas);
 var stored_loans = JSON.parse(localStorage["loans"]);
 
   
-}// --- ANGULAR ---
+}
+		// --- ANGULAR ---
 
 var app = angular.module('myApp', []); //A module is created by using the AngularJS function angular.module. The "myApp" parameter refers to an HTML element in which the application will run.
 app.controller('myCtrl', function($scope) {//scope is the binding part between the HTML (view) and the JavaScript (controller). 
