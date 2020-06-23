@@ -82,7 +82,7 @@
 							<br />
 							
       
-<button type="button" class="btn btn-primary" ng-click= "verifyYEAR(); verifyAMOUNT(); verifyINTEREST; populate()">Re-calculate</button> <!-- make sure the button to calculate results has the angular directive -->
+<button type="button" class="btn btn-primary" ng-click= "verifyYear(); verifyAmount(); verifyInterest; populate()">Re-calculate</button> <!-- make sure the button to calculate results has the angular directive -->
 						</div>
 					</div>
 
@@ -139,21 +139,21 @@ var loans = [
 // --- function: loadDoc() ---
 
 //regular expressions to validate input fields
-function verifyYEAR(){ //create a function to verify the input of year
+function verifyYear(){ //create a function to verify the input of year
   var regex = /^\d{4}$/; // year must be 4 digits 
   var id = document.getElementById("loan_year01").value; //verifies year from the first year of input
   if(regex.test(id))document.getElementById("msg").innerHTML = ""; //Checks if entered input is a number and has 4.
   else
 	  alert("Year must be four digits even if it starts with zero and ends with one"); // alert why the year is rejected
 	}
-function verifyAMOUNT(){ //create a function to verify the input of amount
+function verifyAmount(){ //create a function to verify the input of amount
   var regex = /^([1-9][0-9]*)|([0]+)$/; // amount enetered cant start wit 0 & has to be a number 
   var id = document.getElementById("loan_amt01").value; //verifies amount from the first user input is an actual number
   if(regex.test(id))document.getElementById("msg").innerHTML = ""; //Checks with if statement if entered input is valid.
   else 
 	  alert("Loan amount cannot start with zero"); // alert why the loan amount is rejected
 	}
-function verifyINTEREST(){ //create a function to verify the input of interest rate
+function verifyInterest(){ //create a function to verify the input of interest rate
   var regex = /^\d{1,2}(\.\d{1,4})?$/; // interest enetered can have two numbers before the decimal and up to 4 numbers after the decimal
   var id = document.getElementById("loan_int01").value; //verifies interest rate from the first user input is a valid number
   if(regex.test(id))document.getElementById("msg").innerHTML = ""; //Checks with if statement if entered input is valid.
