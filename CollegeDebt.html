@@ -79,10 +79,12 @@
 									<td><span id="loan_int_accrued">$7,219.62</span></td>
 								</tr>
 							</table>
-              <button type="button" class="btn btn-success" onclick=" verifyYEAR(); ">Check if entered year is valid</button>  <button type="button" class="btn btn-warning" onclick=" verifyAMOUNT(); ">Check if entered loan amount is valid</button> <button type="button" class="btn btn-danger" onclick=" verifyINTEREST(); ">Check if entered interest rate is valid</button> <!-- Adding button which users can click to validate their input-->
+              <button type="button" class="btn btn-success" onclick=" verifyYEAR(); ">Check if entered year is valid</button>
+	<button type="button" class="btn btn-warning" onclick=" verifyAMOUNT(); ">Check if entered loan amount is valid</button>
+	<button type="button" class="btn btn-danger" onclick=" verifyINTEREST(); ">Check if entered interest rate is valid</button> <!-- Adding button which users can click to validate their input-->
 							<br />
               <p id = "msg"></p> 
-							<button type="button" class="btn btn-primary" ng-click= "populate();">Re-calculate</button> <!-- make sure the button to calculate results has the angular directive -->
+			<button type="button" class="btn btn-primary" onclick= "populate();">Re-calculate</button> <!-- make sure the button to calculate results has the angular directive -->
 						</div>
 					</div>
 
